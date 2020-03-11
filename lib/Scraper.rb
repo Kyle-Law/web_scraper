@@ -42,7 +42,7 @@ class Scraper
                      company: listing.css('span.company').text,
                      location: listing.css('span.location').text,
                      summary: listing.css('div.summary').text.gsub("\n", '-'),
-                     day_posted: '0 day ago' }
+                     day_posted: listing.css('span.date').text }
       end
       puts "#{@result.length} remote jobs have been scraped..."
     end
