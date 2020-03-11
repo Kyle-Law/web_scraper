@@ -1,6 +1,6 @@
-# Project Name
+# Web Scraper
 
-> One paragraph statement about the project.
+> Ruby Capstone Project of Microverse, which students have to complete a real-world-like project within 72 hours.
 
 ![screenshot](./app_screenshot.png)
 

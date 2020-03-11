@@ -7,4 +7,3 @@ website = (gets.chomp.gsub(".","") + "_scraper").to_sym
 
 scrap = Scraper.new
 scrap.send(website)
-# scrap.udacity_scraper

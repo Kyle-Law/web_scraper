@@ -4,10 +4,17 @@ require 'byebug'
 
 class Scraper
 
+    def initialize
+        @udacity_url = 'https://www.udacity.com/courses/all'
+        @indeed_url = "https://www.indeed.com/jobs?q=Remote+Web+Developer&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level"
+    end
+
+    def parsing_page(url)
+        Nokogiri::HTML(HTTParty.get(url).body)
+    end
+
     def udacity_scraper
-        url = 'https://www.udacity.com/courses/all'
-        unparsed_page = HTTParty.get(url)
-        parsed_page = Nokogiri::HTML(unparsed_page.body)
+        parsed_page = parsing_page(@udacity_url)
         courses = []
         course_listings = parsed_page.css('div.card-content')
         course_listings.each do |listing|
@@ -23,9 +30,7 @@ class Scraper
     end
 
     def indeed_scraper
-        url = "https://www.indeed.com/jobs?q=Remote+Web+Developer&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level"
-        unparsed_page = HTTParty.get(url)
-        parsed_page = Nokogiri::HTML(unparsed_page.body)
+        parsed_page = parsing_page(@indeed_url)
         total_pages = parsed_page.css('div.searchCount-a11y-contrast-color').text[48..50].to_i
         page_start_num = (0..total_pages).to_a.select{|i| i%10==0}
         jobs = []
