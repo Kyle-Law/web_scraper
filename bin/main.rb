@@ -2,6 +2,18 @@
 
 require_relative '../lib/scraper.rb'
 
+title = <<~MLS
+
+  ╦ ╦┌─┐┌┐   ╔═╗┌─┐┬─┐┌─┐┌─┐┌─┐┬─┐
+  ║║║├┤ ├┴┐  ╚═╗│  ├┬┘├─┤├─┘├┤ ├┬┘
+  ╚╩╝└─┘└─┘  ╚═╝└─┘┴└─┴ ┴┴  └─┘┴└─
+
+  by Kyle Law
+
+
+MLS
+puts title
+puts 'Welcome to Web Scraper!'
 puts 'Which website do you want to scrap? (udacity / indeed / remote.io)'
 input = ''
 loop do
