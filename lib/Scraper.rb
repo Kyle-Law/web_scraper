@@ -7,6 +7,7 @@ class Scraper
     def initialize
         @udacity_url = 'https://www.udacity.com/courses/all'
         @indeed_url = "https://www.indeed.com/jobs?q=Remote+Web+Developer&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level"
+        @remoteio_url = "https://www.remote.io/remote-jobs?s=ruby-on-rails"
     end
 
     def parsing_page(url)
@@ -68,19 +69,17 @@ class Scraper
     end
 
     def remoteio_scraper
-        url = "https://www.remote.io/remote-jobs?s=ruby-on-rails&p=1"
-        unparsed_page = HTTParty.get(url)
-        parsed_page = Nokogiri::HTML(unparsed_page.body)
-        # byebug
+        parsed_page = parsing_page(@remoteio_url)
         total_pages = ((parsed_page.css('small').text[1,3].to_f) % 20).round
         page_start_num = (1..total_pages).to_a
         jobs = []
+        puts "found a total of #{parsed_page.css('small').text[1,3]} jobs, with a total of #{total_pages} pages" if total_pages != 0
         page_start_num.each do |page|
-            url = "https://www.remote.io/remote-jobs?s=ruby-on-rails&p=#{page}"
-            unparsed_page = HTTParty.get(url)
-            parsed_page = Nokogiri::HTML(unparsed_page.body)
+            url = @remoteio_url + "&p=#{page}"
+            parsed_page = parsing_page(url)
             jobs_listings = parsed_page.css('div.job-listing-description')
             jobs_listings.each do |listing|
+                puts "parsing page #{page}..."
                 jobs << {
                     title: listing.css('h3.job-listing-title').text,
                     company: listing.css('div.job-listing-footer').text.split("  ")[2],
@@ -88,7 +87,6 @@ class Scraper
                     day_posted: listing.css('div.job-listing-footer').text.split("  ")[3]
                 }
             end
-            puts "parsed page #{page}"
         end
         # byebug
         # courses.each{|i| puts i}
