@@ -1,13 +1,14 @@
 require_relative './scraper.rb'
 require 'nokogiri'
 require 'httparty'
+require 'byebug'
 
 class IndeedScraper < Scraper
   attr_accessor :url
 
   def initialize(url)
     @url = url
-    @result = []
+    @result = ['Title,Company,Location,Summary, Day_posted']
   end
 
   def scrap
@@ -19,16 +20,17 @@ class IndeedScraper < Scraper
       parsed_page = parsing_page(url)
       jobs_listings = parsed_page.css('div.jobsearch-SerpJobCard')
       jobs_listings.each do |listing|
-        @result << { title: listing.css('a.jobtitle').text,
-                     company: listing.css('span.company').text,
-                     location: listing.css('span.location').text,
-                     summary: listing.css('div.summary').text.gsub("\n", '-'),
-                     day_posted: listing.css('span.date').text }
+        title = listing.css('a.jobtitle').text.gsub("\n", ' ').gsub(',', ' ')
+        company = listing.css('span.company').text.gsub("\n", ' ').gsub(',', ' ')
+        location = 'remote' # css is 'span.location' if needed
+        skills = listing.css('div.summary').text.gsub("\n", ' ').gsub(',', ' ')
+        day_posted = listing.css('span.date').text.gsub("\n", ' ')
+        @result << "#{title},#{company},#{location},#{skills},#{day_posted}"
       end
-      puts "#{@result.length} jobs have been scraped..."
+      puts "#{@result.length - 1} entry level, remote software engineer jobs have been scraped..."
     end
-    sorted = @result.sort_by { |hash| hash[:day_posted] }
-    File.write('indeed_jobs.txt', sorted.join("\n"))
-    puts "indeed_jobs.txt file is created at the root directory with #{@result.length} jobs."
+    sorted = [@result[0]] + @result[1..-1].sort_by { |str| str.split(',')[-1][0, 2].to_i }
+    File.write('indeed_jobs.csv', sorted.join("\n"))
+    puts "indeed_jobs.csv file is created at the root directory with #{@result.length - 1} jobs."
   end
 end

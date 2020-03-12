@@ -2,11 +2,15 @@
 
 > Ruby Capstone Project of Microverse, which students have to complete a real-world-like project within 72 hours.
 
-It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.com and jobs from indeed.com and remote.io. 
+It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.com and jobs from indeed.com and remote.io into CSV file. 
 
 ![image](https://user-images.githubusercontent.com/55923773/76555459-a1e0de80-64d2-11ea-85f1-3e8209ad2b10.png)
-
-![image](https://user-images.githubusercontent.com/55923773/76555560-d359aa00-64d2-11ea-86f3-2a13b77d2496.png)
+![image](https://user-images.githubusercontent.com/55923773/76562091-934cf400-64df-11ea-8eb5-a0bf44be1394.png)
+<small><small><center>Job Scraping from Remote.io</center></small></small>
+![image](https://user-images.githubusercontent.com/55923773/76562763-06a33580-64e1-11ea-8ab4-9c498d4fd947.png)
+<small><small><center>Job Scraping from indeed.com</center></small></small>
+![image](https://user-images.githubusercontent.com/55923773/76562843-2dfa0280-64e1-11ea-8310-9637c57daa23.png)
+<small><small><center>Courses Scraping from udacity.com</center></small></small>
 
 ## Built With
 

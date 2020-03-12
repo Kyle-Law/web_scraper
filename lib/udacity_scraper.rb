@@ -7,21 +7,20 @@ class UdacityScraper < Scraper
 
   def initialize(url)
     @url = url
-    @result = []
+    @result = ['Course Name,Skills Covered,Difficulty,Schoool']
   end
 
   def scrap
     parsed_page = parsing_page(@url)
     course_listings = parsed_page.css('div.card-content')
     course_listings.each do |listing|
-      @result << {
-        course_name: listing.css('a.capitalize').text,
-        skills_covered: listing.css('span.truncate-content').text,
-        difficulty: listing.css('span.capitalize').text,
-        school: listing.css('h4.category').text
-      }
+      course_name = listing.css('a.capitalize').text.gsub(',', ' ')
+      skills_covered = listing.css('span.truncate-content').text.gsub(',', ' ')
+      difficulty = listing.css('span.capitalize').text
+      school = listing.css('h4.category').text
+      @result << "#{course_name},#{skills_covered},#{difficulty},#{school}"
     end
-    File.write('udacity_courses.txt', @result.join("\n"))
-    puts "udacity_courses.txt file is created at the root directory with #{@result.length} udacity courses"
+    File.write('udacity_courses.csv', @result.join("\n"))
+    puts "udacity_courses.csv file is created at the root directory with #{@result.length - 1} udacity courses"
   end
 end
