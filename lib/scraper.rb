@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'httparty'
-require 'byebug'
 
 class Scraper
   def initialize
@@ -10,9 +9,7 @@ class Scraper
     @remoteio_url = 'https://www.remote.io/remote-jobs?s=ruby-on-rails'
   end
 
-  def parsing_page(url)
-    Nokogiri::HTML(HTTParty.get(url).body)
-  end
+  
 
   def udacity_scraper
     parsed_page = parsing_page(@udacity_url)
@@ -71,5 +68,11 @@ class Scraper
     sorted = @result.sort_by { |hash| hash[:day_posted][0, 4].to_i }
     File.write('remote_io.txt', sorted.join("\n")) unless sorted.empty?
     puts "remote_io.txt file is created at the root directory with #{@result.length} jobs." unless @result.length.zero?
+  end
+
+  private
+  
+  def parsing_page(url)
+    Nokogiri::HTML(HTTParty.get(url).body)
   end
 end

@@ -13,7 +13,6 @@ It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.
 - Ruby
 - Nokogiri gem
 - HTTParty gem
-- byebug gem
 
 ## Video Presentation
 Feel free to check out this [link](https://youtu.be/86i3kE8AFqk) for a video walkthrough :)
@@ -61,4 +60,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](LICENSE) licensed.
