@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/scraper.rb'
+require_relative '../lib/udacity_scraper.rb'
+require_relative '../lib/indeed_scraper.rb'
+require_relative '../lib/remoteio_scraper.rb'
 
 title = <<~MLS
 
@@ -16,6 +18,7 @@ puts title
 puts 'Welcome to Web Scraper!'
 puts 'Which website do you want to scrap? (udacity / indeed / remote.io)'
 input = ''
+
 loop do
   input = gets.chomp
   break if ['udacity', 'indeed', 'remote.io'].include?(input)
@@ -23,6 +26,35 @@ loop do
   puts 'Error! Please enter one of the following: udacity / indeed / remote.io'
 end
 
-website = (input.gsub('.', '') + '_scraper').to_sym
-scrap = Scraper.new
-scrap.send(website)
+website = nil
+
+if input == 'udacity'
+  url = 'https://www.udacity.com/courses/all'
+  website = UdacityScraper.new(url)
+
+elsif input == 'indeed'
+  url = 'https://www.indeed.com/jobs?q=remote+software+engineer&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level'
+
+  website = IndeedScraper.new(url)
+elsif input == 'remote.io'
+  puts 'The search keywords are as followed'
+  puts
+  puts '1: javascript,2: ruby-on-rails,3: reactjs,4: python,5: java,6: php,7: kubernetes, 8: docker'
+  puts
+  puts 'Please enter number / combination from above list (eg. 124 for javascript, ruby-on-rails, and python)'
+
+  num = nil
+  loop do
+    num = gets.chomp.split('').map(&:to_i)
+    break if num.all? { |i| i <= 7 && i >= 1 }
+
+    # url = gets.chomp
+    # break if url.match?(/^(https:..www.remote.io.remote-jobs.s=)/)
+
+    puts 'Error! Please enter a valid search combination'
+  end
+
+  website = RemoteIoScraper.new(num)
+end
+
+website.scrap
