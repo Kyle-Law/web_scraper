@@ -6,11 +6,11 @@ It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.
 
 ![image](https://user-images.githubusercontent.com/55923773/76555459-a1e0de80-64d2-11ea-85f1-3e8209ad2b10.png)
 ![image](https://user-images.githubusercontent.com/55923773/76562091-934cf400-64df-11ea-8eb5-a0bf44be1394.png)
-<small><small><center>Job Scraping from Remote.io</center></small></small>
+<small><small><center>Job Scraped from Remote.io</center></small></small>
 ![image](https://user-images.githubusercontent.com/55923773/76562763-06a33580-64e1-11ea-8ab4-9c498d4fd947.png)
-<small><small><center>Job Scraping from indeed.com</center></small></small>
+<small><small><center>Job Scraped from indeed.com</center></small></small>
 ![image](https://user-images.githubusercontent.com/55923773/76562843-2dfa0280-64e1-11ea-8310-9637c57daa23.png)
-<small><small><center>Courses Scraping from udacity.com</center></small></small>
+<small><small><center>Courses Scraped from udacity.com</center></small></small>
 
 ## Built With
 
@@ -75,6 +75,9 @@ Give a ⭐️ if you like this project!
 - Microverse
 - Nokogiri gem
 - HTTParty Parser
+- Udacity.com
+- Indeed.com
+- Remote.io
 
 ## 📝 License
 
