@@ -4,9 +4,9 @@
 
 It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.com and jobs from indeed.com and remote.io. 
 
-![image](https://user-images.githubusercontent.com/55923773/76449588-4f86bb80-6407-11ea-8016-6c00f0d53c24.png)
+![image](https://user-images.githubusercontent.com/55923773/76555459-a1e0de80-64d2-11ea-85f1-3e8209ad2b10.png)
 
-![image](https://user-images.githubusercontent.com/55923773/76449672-75ac5b80-6407-11ea-82b4-1f20a4d8d2dd.png)
+![image](https://user-images.githubusercontent.com/55923773/76555560-d359aa00-64d2-11ea-86f3-2a13b77d2496.png)
 
 ## Built With
 
@@ -14,24 +14,39 @@ It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.
 - Nokogiri gem
 - HTTParty gem
 
+## Project Structure
+
+```
+├── README.md
+├── bin
+│   └── main.rb
+└── lib
+    └── scraper.rb
+    └── udacity_scraper.rb
+    └── indeed_scraper.rb
+    └── remoteio_scraper.rb
+└── rspec
+    └── scraper_spec.rb
+    └── spec_helper.rb
+```
+
 ## Video Presentation
 Feel free to check out this [link](https://youtu.be/86i3kE8AFqk) for a video walkthrough :)
 
-### Run tests
+## Run tests
 1) Git clone this repo and cd the to the `web_scraper` directory.
-2) Install rspec with `gem install rspec`
-3) Run `rspec spec/scraper_rspec.rb`
+2) Install rspec with `gem install rspec`.
+3) Run `rspec` in Command Line.
 4) You would see failures because all 3 scraped files haven't been created yet.
 5) To solve it, run `ruby bin/main.rb` and input 'udacity', 'indeed', and 'remote.io' for every execution.
-6) Run `rspec spec/scraper_rspec.rb` again. The test cases would success upon each file created :)
+6) Run `rspec` in CLI again. The test cases would success upon each file created :)
 
 
-### Deployment
+## Deployment
 1) Git clone this repo and cd the to the `web_scraper` directory.
-2) Run `ruby bin/main.rb`
-3) Input either 'udacity', 'indeed', or 'remote.io'
-4) Tada! 'udacity_courses.txt', 'indeed_jobs.txt', or 'remote_io.txt' would be created at the root directory respectively.
-5) The default URLs for indeed.com and remote.io are catered for Ruby-on-Rails remote job opportunities. Feel free to change the default URL in `lib/scraper.rb` to suit your specifications. :)
+2) Run `bin/main.rb`.
+3) Input either 'udacity', 'indeed', or 'remote.io' and follows respective commands.
+4) Tada! 'udacity_courses.txt', 'indeed_jobs.txt', or 'remote_io.csv' would be created at the root directory respectively :)
 
 ## Authors
 
@@ -56,7 +71,6 @@ Give a ⭐️ if you like this project!
 - Microverse
 - Nokogiri gem
 - HTTParty Parser
-- byebug gem
 
 ## 📝 License
 

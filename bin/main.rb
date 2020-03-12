@@ -37,6 +37,7 @@ elsif input == 'indeed'
 
   website = IndeedScraper.new(url)
 elsif input == 'remote.io'
+  puts 'Welcome to webscraper for remote.io :)'
   puts 'The search keywords are as followed'
   puts
   puts '1: javascript,2: ruby-on-rails,3: reactjs,4: python,5: java,6: php,7: kubernetes, 8: docker'
@@ -46,7 +47,7 @@ elsif input == 'remote.io'
   num = nil
   loop do
     num = gets.chomp.split('').map(&:to_i)
-    break if num.all? { |i| i <= 7 && i >= 1 }
+    break if num.all? { |i| i <= 8 && i >= 1 }
 
     # url = gets.chomp
     # break if url.match?(/^(https:..www.remote.io.remote-jobs.s=)/)
