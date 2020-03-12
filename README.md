@@ -1,6 +1,6 @@
 # Web Scraper
 
-> Ruby Capstone Project of Microverse, which students have to complete a real-world-like project within 72 hours.
+> Ruby Capstone Project of Microverse, which students have to complete a real-world-like project within 72 hours according to [this project specifications](https://www.notion.so/microverse/Build-your-own-scraper-f54eaca54d8a4d758a5f0141468127a8)
 
 It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.com and jobs from indeed.com and remote.io into CSV file. 
 
@@ -35,7 +35,7 @@ It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.
 ```
 
 ## Video Presentation
-Feel free to check out this [link](https://youtu.be/fc7P5Y0NTcM) for a video walkthrough :)
+Feel free to check out this [link](https://youtu.be/fc7P5Y0NTcM) for a 3min video walkthrough :)
 
 ## Run tests
 1) Git clone this repo and cd the to the `web_scraper` directory.
@@ -49,8 +49,8 @@ Feel free to check out this [link](https://youtu.be/fc7P5Y0NTcM) for a video wal
 ## Deployment
 1) Git clone this repo and cd the to the `web_scraper` directory.
 2) Run `bin/main.rb`.
-3) Input either 'udacity', 'indeed', or 'remote.io' and follows respective commands.
-4) Tada! 'udacity_courses.txt', 'indeed_jobs.txt', or 'remote_io.csv' would be created at the root directory respectively :)
+3) Input either 'udacity', 'indeed', or 'remote.io' and follows the respective commands.
+4) Tada! 'udacity_courses.csv', 'indeed_jobs.csv', or 'remote_io.csv' would be created at the root directory respectively :)
 
 ## Authors
 
