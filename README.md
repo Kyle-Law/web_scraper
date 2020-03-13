@@ -37,6 +37,13 @@ It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.
 ## Video Presentation
 Feel free to check out this [link](https://youtu.be/fc7P5Y0NTcM) for a 3min video walkthrough :)
 
+## Deployment
+1) Git clone this repo and cd the to the `web_scraper` directory.
+2) Run `bundle install` in command line to install Nokogiri and HTTParty Gem.
+3) Run `bin/main.rb`.
+4) Input either 'udacity', 'indeed', or 'remote.io' and follows the respective commands.
+5) Tada! 'udacity_courses.csv', 'indeed_jobs.csv', or 'remote_io.csv' would be created at the root directory respectively :)
+
 ## Run tests
 1) Git clone this repo and cd the to the `web_scraper` directory.
 2) Install rspec with `gem install rspec`.
@@ -44,13 +51,6 @@ Feel free to check out this [link](https://youtu.be/fc7P5Y0NTcM) for a 3min vide
 4) You would see failures because all 3 scraped files haven't been created yet.
 5) To solve it, run `ruby bin/main.rb` and input 'udacity', 'indeed', and 'remote.io' for every execution.
 6) Run `rspec` in CLI again. The test cases would success upon each file created :)
-
-
-## Deployment
-1) Git clone this repo and cd the to the `web_scraper` directory.
-2) Run `bin/main.rb`.
-3) Input either 'udacity', 'indeed', or 'remote.io' and follows the respective commands.
-4) Tada! 'udacity_courses.csv', 'indeed_jobs.csv', or 'remote_io.csv' would be created at the root directory respectively :)
 
 ## Authors
 
