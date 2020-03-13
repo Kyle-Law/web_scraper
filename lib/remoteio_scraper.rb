@@ -29,14 +29,14 @@ class RemoteIoScraper < Scraper
       jobs_listings.each do |listing|
         title = listing.css('h3.job-listing-title').text.delete(',')
         company = listing.css('div.job-listing-footer').text.split('  ')[2].delete(',')
-        skills = listing.css('div.job-listing-footer').text.split('  ')[4].delete(',')
-        day_posted = listing.css('div.job-listing-footer').text.split('  ')[3].delete(',')
+        skills = listing.css('div.job-listing-footer').text.split('  ')[4]
+        day_posted = listing.css('div.job-listing-footer').text.split('  ')[3].delete(',').match(/\d+ \w+ ago/)
         @result << "#{title},#{company},#{skills},#{day_posted}"
       end
       puts "#{@result.length - 1} jobs have been scraped..."
     end
-    sorted = [@result[0]] + @result[1..-1].sort_by { |str| str.split(',')[-1][0, 4].to_i }
-    File.write('remote_io.csv', sorted.join("\n"))
+    # sorted = [@result[0]] + @result[1..-1].sort_by { |str| str.split(',')[-1][0, 4].to_i }
+    File.write('remote_io.csv', @result.join("\n"))
     puts "remote_io.csv file is created at the root directory with #{@result.length - 1} jobs."
   end
 end
