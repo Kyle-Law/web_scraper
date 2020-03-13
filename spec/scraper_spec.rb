@@ -8,14 +8,14 @@ require 'nokogiri'
 require 'httparty'
 
 RSpec.describe Scraper do
-  subject {Scraper.new}
+  subject { Scraper.new }
   it 'checks if webpage is parsed' do
-    expect(subject.send(:parsing_page,'https://www.udacity.com/courses/all').text.class == String).to be_truthy
+    expect(subject.send(:parsing_page, 'https://www.udacity.com/courses/all').text.class == String).to be_truthy
   end
 end
 
 RSpec.describe UdacityScraper do
-  subject {UdacityScraper.new('https://www.udacity.com/courses/all')}
+  subject { UdacityScraper.new('https://www.udacity.com/courses/all') }
   it 'should create udacity_courses.csv after invoking #scrap' do
     puts "We're testing if website scrapping from udacity.com works fine..."
     subject.scrap
@@ -24,8 +24,11 @@ RSpec.describe UdacityScraper do
 end
 
 RSpec.describe IndeedScraper do
-  subject {IndeedScraper.new('https://www.indeed.com/jobs?q=remote+software+engineer&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level')}
-  
+  # rubocop:disable Layout/LineLength
+  let(:url) { 'https://www.indeed.com/jobs?q=remote+software+engineer&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level' }
+  # rubocop:enable Layout/LineLength
+  subject { IndeedScraper.new(url) }
+
   it 'should create indeed_jobs.csv after invoking #scrap' do
     puts "We're testing if website scrapping from indeed.com works fine..."
     subject.scrap
@@ -34,10 +37,10 @@ RSpec.describe IndeedScraper do
 end
 
 RSpec.describe RemoteIoScraper do
-  subject {RemoteIoScraper.new([1,2,3])}
-  let(:search_combination) {[1,2,3]}
-  let (:completed_url) {'https://www.remote.io/remote-jobs?s=javascript,ruby-on-rails,reactjs'}
-  
+  subject { RemoteIoScraper.new([1, 2, 3]) }
+  let(:search_combination) { [1, 2, 3] }
+  let(:completed_url) { 'https://www.remote.io/remote-jobs?s=javascript,ruby-on-rails,reactjs' }
+
   it 'should return a complete url from #url_maker' do
     expect(subject.url_maker(search_combination)).to eql(completed_url)
   end
