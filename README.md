@@ -35,7 +35,7 @@ It's a 3-in-1 Web Scraper, which allows users to parse all courses from udacity.
 ```
 
 ## Video Presentation
-Feel free to check out this [link](https://youtu.be/fc7P5Y0NTcM) for a 3min video walkthrough :)
+Feel free to check out this [link](https://www.youtube.com/watch?v=BRg-9HNG4BI&feature=youtu.be) for a 3min video walkthrough :)
 
 ## Deployment
 1) Git clone this repo and cd the to the `web_scraper` directory.
