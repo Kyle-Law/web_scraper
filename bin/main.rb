@@ -33,7 +33,7 @@ if input == 'udacity'
   website = UdacityScraper.new(url)
 
 elsif input == 'indeed'
-  url = 'https://www.indeed.com/jobs?q=remote+software+engineer&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level'
+  url = 'https://www.indeed.com/jobs?q=Ruby+On+Rails&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&sort=date'
 
   website = IndeedScraper.new(url)
 elsif input == 'remote.io'
