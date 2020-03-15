@@ -15,8 +15,8 @@ class IndeedScraper < Scraper
     total_pages = total_pages_finder(parsed_page, 'div.searchCount-a11y-contrast-color')
     pages_append_urls = page_ending_urls(total_pages)
     scrap_per_page(pages_append_urls)
-    sorted = sort_by_dates(@result)
-    write('indeed_jobs.csv', sorted, 'jobs')
+    sorted_arr = sort_by_dates(@result)
+    write('indeed_jobs.csv', sorted_arr, 'jobs')
   end
 
   private

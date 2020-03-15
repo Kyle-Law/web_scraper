@@ -12,6 +12,11 @@ RSpec.describe Scraper do
   it 'checks if webpage is parsed' do
     expect(subject.send(:parsing_page, 'https://www.udacity.com/courses/all').text.class == String).to be_truthy
   end
+
+  it 'checks if file is written' do
+    subject.write('testing.csv', [1, 2, 3, 4, 5], 'tests')
+    expect(File.exist?('testing.csv')).to be_truthy
+  end
 end
 
 RSpec.describe UdacityScraper do
