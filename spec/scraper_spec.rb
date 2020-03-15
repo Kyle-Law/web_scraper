@@ -24,9 +24,8 @@ RSpec.describe UdacityScraper do
 end
 
 RSpec.describe IndeedScraper do
-  # rubocop:disable Layout/LineLength
-  let(:url) { 'https://www.indeed.com/jobs?q=remote+software+engineer&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&explvl=entry_level' }
-  # rubocop:enable Layout/LineLength
+  let(:url) { 'https://www.indeed.com/jobs?q=Ruby+On+Rails&l=Remote&rbl=Remote&jlid=aaa2b906602aa8f5&sort=date' }
+
   subject { IndeedScraper.new(url) }
 
   it 'should create indeed_jobs.csv after invoking #scrap' do
@@ -42,7 +41,7 @@ RSpec.describe RemoteIoScraper do
   let(:completed_url) { 'https://www.remote.io/remote-jobs?s=javascript,ruby-on-rails,reactjs' }
 
   it 'should return a complete url from #url_maker' do
-    expect(subject.url_maker(search_combination)).to eql(completed_url)
+    expect(subject.send(:url_maker, search_combination)).to eql(completed_url)
   end
 
   it 'should create remote_io.csv after invoking #scrap' do
