@@ -1,7 +1,6 @@
 require_relative './scraper.rb'
 require 'nokogiri'
 require 'httparty'
-require 'byebug'
 
 class IndeedScraper < Scraper
   attr_accessor :url
@@ -11,14 +10,14 @@ class IndeedScraper < Scraper
     @result = ['Title,Company,Location,Summary,URL, Day_posted']
   end
 
+  
   def scrap
     parsed_page = parsing_page(@url)
     total_pages = total_pages_finder(parsed_page, 'div.searchCount-a11y-contrast-color')
     pages_append_urls = page_ending_urls(total_pages)
     scrap_per_page(pages_append_urls)
     sorted = sort_by_dates(@result)
-    File.write('indeed_jobs.csv', sorted.join("\n"))
-    puts "indeed_jobs.csv file is created at the root directory with #{@result.length - 1} jobs."
+    write('indeed_jobs.csv',sorted,'jobs')
   end
 
   private
@@ -57,4 +56,5 @@ class IndeedScraper < Scraper
   def sort_by_dates(arr)
     [arr[0]] + arr[1..-1].sort_by { |str| str.split(',')[-1][0, 2].to_i }
   end
+
 end
